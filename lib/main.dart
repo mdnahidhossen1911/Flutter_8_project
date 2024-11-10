@@ -91,7 +91,7 @@ class HomeActivity extends StatelessWidget {
               SizedBox(height: 8,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Text('If you submit code directly cody from chatgpt then mark 0',
+                child: Text('If you submit code directly cody from chatgpt then mark will 0',
                   style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
               ),
 
