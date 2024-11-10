@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Assignment 2',
       home: const HomeActivity(),
     );
   }
@@ -41,7 +41,7 @@ class HomeActivity extends StatelessWidget {
             children: [
 
               //item 1
-              SizedBox(height: 12,),
+              SizedBox(height: 8,),
               SizedBox(
                 height: 180,
                 width: 180,
@@ -52,7 +52,7 @@ class HomeActivity extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 8,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text('Ice cream is very delicious right?',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
@@ -70,7 +70,7 @@ class HomeActivity extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 8,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text('Programming is not boring if you love it',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
@@ -88,7 +88,7 @@ class HomeActivity extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 8,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Text('If you submit code directly cody from chatgpt then mark 0',
