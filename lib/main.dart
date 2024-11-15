@@ -1,69 +1,62 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyMacOSApp());
+void main(){
+  runApp(Myapp());
 }
 
-class MyMacOSApp extends StatelessWidget {
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter macOS App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Live test 2',
+      home: HomeActivity(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController _controller = TextEditingController();
-  String _displayText = '';
+class HomeActivity extends StatelessWidget {
+  const HomeActivity({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
-        title: Text('Flutter macOS UI'),
-        leading: Icon(Icons.apple), // Mac-specific icon
+        backgroundColor: Colors.red,
+        title: Text('Need Blood',style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.add,color: Colors.white,))
+        ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
+      
+      body: const Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                labelText: 'Enter Text',
-                border: OutlineInputBorder(),
+
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: CircleAvatar(
+                backgroundColor: Colors.black54,
+                child: Icon(Icons.bloodtype_outlined,color: Colors.redAccent,size: 100,),
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _displayText = _controller.text;
-                });
-              },
-              child: Text('Display Text'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _displayText,
-              style: TextStyle(fontSize: 18),
-            ),
+
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Donate Blood',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            )
+
           ],
         ),
       ),
+      
     );
   }
 }
