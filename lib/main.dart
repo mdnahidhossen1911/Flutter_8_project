@@ -1,102 +1,67 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyMacOSApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class MyMacOSApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Assignment 2',
-      home: const HomeActivity(),
+    return MaterialApp(
+      title: 'Flutter macOS App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class HomeActivity extends StatelessWidget {
-  const HomeActivity({super.key});
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController _controller = TextEditingController();
+  String _displayText = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: Text('My Profile'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.call)),
-        ],
+        title: Text('Flutter macOS UI'),
+        leading: Icon(Icons.apple), // Mac-specific icon
       ),
-      body: const SizedBox(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-
-              //item 1
-              SizedBox(height: 8,),
-              SizedBox(
-                height: 180,
-                width: 180,
-                child: CircleAvatar(
-                  child: Icon(
-                    Icons.icecream_outlined,
-                    size: 110,
-                  ),
-                ),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                labelText: 'Enter Text',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 8,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('Ice cream is very delicious right?',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-              ),
-
-              //item 2
-              SizedBox(height: 40,),
-              SizedBox(
-                height: 180,
-                width: 180,
-                child: CircleAvatar(
-                  child: Icon(
-                    Icons.code,
-                    size: 110,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('Programming is not boring if you love it',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-              ),
-
-              //item 3
-              SizedBox(height: 40,),
-              SizedBox(
-                height: 180,
-                width: 180,
-                child: CircleAvatar(
-                  child: Icon(
-                    Icons.egg_outlined,
-                    size: 110,
-                  ),
-                ),
-              ),
-              SizedBox(height: 8,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Text('If you submit code directly cody from chatgpt then mark will 0',
-                  style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-              ),
-
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _displayText = _controller.text;
+                });
+              },
+              child: Text('Display Text'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              _displayText,
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
         ),
       ),
     );
